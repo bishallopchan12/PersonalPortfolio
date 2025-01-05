@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Professional portfolio website showcasing my skills, projects, and contact information.">
+  <title>Bishal Lama | Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1 class="logo">Bishal Lama</h1>
+      <nav>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#home" aria-label="Go to Home section">Home</a></li>
+          <li><a href="#about" aria-label="Go to About Me section">About</a></li>
+          <li><a href="#skills" aria-label="Go to Skills section">Skills</a></li>
+          <li><a href="#projects" aria-label="Go to Projects section">Projects</a></li>
+          <li><a href="#contact" aria-label="Go to Contact section">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="menu-toggle" id="mobile-menu" aria-label="Toggle menu">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-overlay">
+        <div class="hero-content">
+          <h2 class="hero-heading">Welcome, I'm <span class="highlight">Bishal Lama</span></h2>
+          <p class="hero-subheading">Creating impactful digital experiences as a <strong>Frontend Developer</strong>.</p>
+          <a href="#contact" class="btn hero-btn">Get in Touch</a>
+        </div>
+      </div>
+    </section>
+    
+
+    <section id="about" class="about">
+      <h2>About Me</h2>
+      <div class="about-content">
+        <img src="images/bishal.jpg" alt="Bishal Lama" class="responsive-img">
+        <div>
+          <p>I’m Bishal Lama, a frontend developer passionate about crafting innovative solutions. With expertise in Web Development, API Integration, and Optimization Algorithms, I am committed to delivering quality and impactful digital products.</p>
+          <p>Beyond coding, I enjoy exploring new technologies and sharing my learnings with the community.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="skills">
+      <h2>Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <i class="fab fa-html5"></i>
+          <h3>HTML</h3>
+        </div>
+        <div class="skill-card">
+          <i class="fab fa-css3-alt"></i>
+          <h3>CSS</h3>
+        </div>
+        <div class="skill-card">
+          <i class="fab fa-js"></i>
+          <h3>JavaScript</h3>
+        </div>
+        <div class="skill-card">
+          <i class="fas fa-database"></i>
+          <h3>SQL</h3>
+        </div>
+        <div class="skill-card">
+          <i class="fab fa-python"></i>
+          <h3>Python</h3>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="projects">
+      <h2>Projects</h2>
+      <div class="project-list">
+        <article class="project-card">
+          <img src="images/voting-system.jpg" alt="College Voting System" class="responsive-img">
+          <h3>College Voting System</h3>
+          <p>A secure web-based voting system for college events, built using PHP, JavaScript, and MySQL during my 4th semester.</p>
+          <a href="#" class="btn">Details</a>
+        </article>
+        <article class="project-card">
+          <img src="images/travel-tour-management.jpg" alt="Travel Management System" class="responsive-img">
+          <h3>Travel Management System</h3>
+          <p>A comprehensive system to manage travel packages, bookings, and itineraries, developed with PHP and API integration.</p>
+          <a href="#" class="btn">Details</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2>Contact</h2>
+      <form id="contactForm">
+        <input type="text" name="name" placeholder="Your Name" required aria-label="Your Name">
+        <input type="email" name="email" placeholder="Your Email" required aria-label="Your Email">
+        <textarea name="message" placeholder="Your Message" rows="5" required aria-label="Your Message"></textarea>
+        <button type="submit" class="btn">Submit</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2024 Bishal Lama | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    // Mobile Menu Toggle
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navLinks = document.getElementById('nav-links');
+    
+    mobileMenu.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      mobileMenu.querySelector('i').classList.toggle('fa-bars');
+      mobileMenu.querySelector('i').classList.toggle('fa-times');
+    });
+
+    // Smooth Scroll on Click
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Scroll Animation
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+        } else {
+          entry.target.classList.remove('animate');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    document.querySelectorAll('section').forEach(section => {
+      observer.observe(section);
+    });
+
+    // Form Submission Alert
+    document.getElementById('contactForm').addEventListener('submit', event => {
+      event.preventDefault();
+      alert('Thank you for reaching out! I will get back to you soon.');
+      event.target.reset();
+    });
+  </script>
+</body>
+</html>
